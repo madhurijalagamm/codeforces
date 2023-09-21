@@ -1,0 +1,42 @@
+import java.util.Scanner;
+ 
+public class TargetArrows {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt(); 
+ 
+        while (t-- > 0) {
+            int n = 10; 
+            int m = 10; 
+            char[][] a = new char[n + 1][m + 1];
+ 
+            for (int i = 1; i <= n; i++) {
+                String row = scanner.next();
+                for (int j = 1; j <= m; j++) {
+                    a[i][j] = row.charAt(j - 1);
+                }
+            }
+ 
+            int ans = 0;
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    if (a[i][j] == 'X') {
+                        if (i >= 5 && i <= 6 && j >= 5 && j <= 6) {
+                            ans += 5;
+                        } else if (i >= 4 && i <= 7 && j >= 4 && j <= 7) {
+                            ans += 4;
+                        } else if (i >= 3 && j >= 3 && i <= 8 && j <= 8) {
+                            ans += 3;
+                        } else if (i >= 2 && j >= 2 && i <= 9 && j <= 9) {
+                            ans += 2;
+                        } else {
+                            ans++;
+                        }
+                    }
+                }
+            }
+ 
+            System.out.println(ans);
+        }
+    }
+}
